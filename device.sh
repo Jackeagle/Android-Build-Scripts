@@ -19,7 +19,8 @@ do
 	echo -e "*AICP BUILD For I9082 STARTING*"
 	echo -e "*			       *"
    	echo -e "*******************************"
-	
+	repo sync
+        
         #these copy normal patches reqd to boot the device and core functions to work
 	cp -r ~/patch/audiovideo.diff ~/aicp/frameworks/av
 	cp -r ~/patch/bluetooth.diff ~/aicp/hardware/broadcom/libbt
@@ -95,7 +96,7 @@ do
 	echo -e "*AICP Build For Falcon Starting *"
 	echo -e "*			         *"
    	echo -e "*********************************"
-        
+        repo sync
        . build/envsetup.sh && brunch i9082
        cd ../
        
