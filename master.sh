@@ -1,9 +1,10 @@
 #!/bin/bash
-#This build script has to be kept in the home folder along with the patch folder .. it will automatically navigate and apply patches and build
+#This build script has to be kept in the home folder along with the patch folder(for i9082).
 
 
-echo -e "Welcome To Android Rom Devleopment"
-
+echo -e "************************************"
+echo -e "*WELCOME TO ANDRIOD ROM DEVELOPMENT*"
+echo -e "************************************"
 
 OPTIONS="AICP
 Revolt
@@ -12,7 +13,7 @@ Nameless
 Quit"
 
 
-PS3="Select a ROM to build  (1-5): "
+PS3="Select a ROM You Want To Build  (1-5): "
 select opt in $OPTIONS; 
 do
     if [ "$opt" = "Quit" ]; then
@@ -22,7 +23,8 @@ do
         cd aicp
         . device.sh
     	 
-#AICP BUILD ENDS
+#AICP BUILD STARTS    	 
+
 elif [ "$opt" = "Revolt" ]; then
         echo -e "**************************"
 	echo -e "*Revolt BUILD STARTING*"
@@ -31,7 +33,7 @@ elif [ "$opt" = "Revolt" ]; then
 
 	cd revolt/. device.sh
 	
-#REVOLT BUILD ENDS
+#REVOLT BUILD STARTS
 
 
 elif [ "$opt" = "AOGP" ]; then
@@ -41,6 +43,8 @@ elif [ "$opt" = "AOGP" ]; then
    	echo -e "*******************************"
 
         cd aogp/. device.sh
+
+#AOGP BUILD STARTS
 	
 elif [ "$opt" = "Nameless" ]; then
         echo -e "*******************************"
