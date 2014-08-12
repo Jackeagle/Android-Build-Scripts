@@ -8,7 +8,7 @@ falcon
 Quit"
 
 
-PS3="Select a Device to build  (1-3): "
+PS3="Select a Device to build  (1-2): "
 select opt in $OPTIONS; 
 do
     if [ "$opt" = "Quit" ]; then
@@ -97,7 +97,7 @@ do
 	echo -e "*			         *"
    	echo -e "*********************************"
         repo sync
-       . build/envsetup.sh && brunch i9082
+       . build/envsetup.sh && brunch falcon
        cd ../
        
     fi
