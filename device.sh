@@ -1,4 +1,4 @@
-#This Script Should Be Placed In Rom Directory
+#This Script Should Be Placed In AICP Rom Directory
 
 echo -e "*>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<*"
 echo -e "*     Welcome To AICP Rom Development   *"
