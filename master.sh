@@ -7,7 +7,7 @@ echo -e "*WELCOME TO ANDRIOD ROM DEVELOPMENT*"
 echo -e "************************************"
 
 OPTIONS="AICP
-Revolt
+Spirit
 AOGP
 Nameless
 Quit"
@@ -25,15 +25,16 @@ do
     	 
 #AICP BUILD STARTS    	 
 
-elif [ "$opt" = "Revolt" ]; then
+elif [ "$opt" = "Spirit" ]; then
         echo -e "**************************"
-	echo -e "*Revolt BUILD STARTING*"
+	echo -e "*Spirit BUILD STARTING   *"
 	echo -e "*			  *"
    	echo -e "**************************"
 
-	cd revolt/. device.sh
+	cd spirit
+	. device.sh
 	
-#REVOLT BUILD STARTS
+#SPIRIT BUILD STARTS
 
 
 elif [ "$opt" = "AOGP" ]; then
