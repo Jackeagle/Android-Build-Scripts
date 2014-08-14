@@ -21,6 +21,8 @@
 #This Script Should Be Placed In AICP Rom Directory
 #if you want to add your devices replace the device option and make appropriate changes to your devices.
 
+#This Script Should Be Placed In Rom Directory
+
 echo -e "*>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<*"
 echo -e "*     Welcome To AICP Rom Development   *"
 echo -e "*>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<*"
@@ -40,7 +42,9 @@ do
 	echo -e "*AICP BUILD For I9082 STARTING*"
 	echo -e "*			       *"
    	echo -e "*******************************"
-	repo sync
+	repo sync -j50
+        . build/envsetup.sh && brunch i9082
+        cd 
         
         #these copy normal patches reqd to boot the device and core functions to work
 	cp -r ~/patch/audiovideo.diff ~/aicp/frameworks/av
@@ -54,28 +58,30 @@ do
 	echo -e " patches copied ... pleaser review to check for any errors "
 	read -p " PRESS ENTER TO START APPLYING THE PATCHES "
 
-	echo -e ""
-	echo -e " Applying Patches for Galaxy Grand Duos "
-	echo -e ""
+	echo -e "#########################################"
+	echo -e " Applying Patches for Galaxy Grand Duos #"
+	echo -e "#########################################"
 
 	# Bluetooth Patch
 	echo -e ""
 	echo -e " APPLYING BLUETOOTH PATCH "
 	echo -e ""
-	cd hardware/broadcom/libbt
+	cd aicp/hardware/broadcom/libbt
 	git checkout .
 	patch -p1 < bluetooth.diff
-	cd ../../../
-	echo -e " BLUETOOTH PATCH APPLIED SUCCESSFULLY "
-	echo -e ""
+	cd ../../../../
+        
+        echo -e "****************************************"
+	echo -e "* BLUETOOTH PATCH APPLIED SUCCESSFULLY *"
+	echo -e "****************************************"
 
 	# HW Composer Patch 
 	echo -e ""
 	echo -e " APPLYING HWC PATCH "
-	cd frameworks/native
+	cd aicp/frameworks/native
 	git checkout .
 	patch -p1 < hwc.diff
-
+        cd ../../../
 	echo -e ""
 	echo -e " HWC PATCHES APPLIED SUCCESSFULLY"
 	echo -e ""
@@ -84,20 +90,21 @@ do
 	echo -e ""
 	echo -e " APPLYING A/V PATCHES"
 	echo -e ""
-	cd ../av
+	cd aicp/frameworks/av
 	git checkout .
 	patch -p1 < audiovideo.diff 
+        cd ../../../
 	echo -e ""
 	echo -e " AUDIO/VIDEO PATCHES APPLIED SUCCESSFULLY "
 
 	# WEBVIEW PATCHES 
-	echo -e ""
-	echo -e " APPLYING WEBVIEW PATCH "
-	echo -e ""
-	cd ../../
-	cd external/chromium_org
+	echo -e "##########################"
+	echo -e "# APPLYING WEBVIEW PATCH #"
+	echo -e "##########################"
+	cd aicp/external/chromium_org
 	git checkout .
 	patch -p1 < webview.diff
+        cd ../../
 	echo -e ""
 	echo -e " WEBVIEW PATCHES APPLIED SUCCESSFULLY"
 
@@ -105,11 +112,12 @@ do
 	echo -e ""
 	echo -e " ALL BASIC PATCHES APPLIED SUCCESSFULLY , NOW BUILDING! "
 	echo -e ""
-	cd ../../
+	
 
 	
 	. build/envsetup.sh && brunch i9082
         cd
+
 #I9082 Build Ends 
 
      elif [ "$opt" = "falcon" ]; then
